@@ -1,4 +1,4 @@
-(ns cmock
+(ns cmock.core
     (:import (org.mockito Mockito)
            (org.mockito.stubbing Answer)))
 (defn inside-when-expr [when-code mock-obj]
