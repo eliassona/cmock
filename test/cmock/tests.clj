@@ -8,11 +8,16 @@
 
 
 (deftest macro-expansion
-  (is (= '(do (.thenReturn (org.mockito.Mockito/when (.exists f)) true) (.thenReturn (org.mockito.Mockito/when (.getPath f)) "path"))
+  (is (= '(do
+            (.thenReturn (org.mockito.Mockito/when (.exists f)) true)
+            (.thenReturn (org.mockito.Mockito/when (.getPath f)) "path")
+            (.thenReturn (org.mockito.Mockito/when (.setReadable f false true)) true)
+            )
          (macroexpand-1
           '(provided f
                      (exists) => true
-                     (getPath) => "path")))
+                     (getPath) => "path"
+                     (setReadable false true) => true)))
       ))
 
 
